@@ -103,6 +103,4 @@ taskInput.addEventListener('keypress', function(event) {
         addTask();
     }
 });
-
-// Initialize the app
 init();
