@@ -1,32 +1,32 @@
-// Get DOM elements
+
 const taskInput = document.getElementById('taskInput');
 const addBtn = document.getElementById('addBtn');
 const todoList = document.getElementById('todoList');
 const taskCount = document.getElementById('taskCount');
 
-// Load tasks from local storage on page load
+
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-// Initialize the app
+
 function init() {
     renderTasks();
     updateTaskCount();
 }
 
-// Function to save tasks to local storage
+
 function saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
     updateTaskCount();
 }
 
-// Function to update task counter
+
 function updateTaskCount() {
     const total = tasks.length;
     const completed = tasks.filter(task => task.completed).length;
     taskCount.textContent = `Total tasks: ${total} | Completed: ${completed}`;
 }
 
-// Function to render all tasks
+
 function renderTasks() {
     todoList.innerHTML = '';
     
@@ -59,7 +59,7 @@ function renderTasks() {
     });
 }
 
-// Function to add a new task
+
 function addTask() {
     const text = taskInput.value.trim();
     
@@ -79,14 +79,14 @@ function addTask() {
     renderTasks();
 }
 
-// Function to toggle task completion
+
 function toggleComplete(index) {
     tasks[index].completed = !tasks[index].completed;
     saveTasks();
     renderTasks();
 }
 
-// Function to delete a task
+
 function deleteTask(index) {
     if (confirm('Are you sure you want to delete this task?')) {
         tasks.splice(index, 1);
@@ -95,7 +95,7 @@ function deleteTask(index) {
     }
 }
 
-// Event Listeners
+
 addBtn.addEventListener('click', addTask);
 
 taskInput.addEventListener('keypress', function(event) {
